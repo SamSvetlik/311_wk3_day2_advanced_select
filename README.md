@@ -50,9 +50,24 @@ SELECT COUNT(*) AS popular, SUBSTR(phone1, 1, 3) AS area_code FROM usersContact 
   * Area code: 973
 
 3.
-  * first_name:
-  * county:
-  * county total:
+SELECT 
+	MIN(users.first_name),
+    usersAddress.county,
+    COUNT(usersAddress.county) AS population
+FROM
+	users
+JOIN
+	usersAddress
+WHERE 
+	users.id = usersAddress.user_id
+GROUP BY 
+	county
+HAVING
+	population > 10
+ 
+  * first_name: Andra
+  * county: New York
+  * county total: 14
 
 
 ## Summary
